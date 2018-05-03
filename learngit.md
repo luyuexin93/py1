@@ -22,19 +22,19 @@
   - Windows: 从git官网下载安装包 [链接](https://git-scm.com/download/win)
 
 ## 基本步骤
-   - 安装完成后 windows 运行Git Bash
+   - 安装完成后 windows 运行Git Bash 
    - 设置用户
      - git config --global user.name "Your Name"
      - git config --global user.email "email@example.com"
-   - 创建git仓库目录并初始化
+   - **创建git仓库目录并初始化**
      - mkdir learngit
      - cd learngit
      - pwd
      - git init 管理当前目录 生成.git
-   - 管理文件并上传
+   - **管理文件并上传**
      - git add readme.txt
      - git comit -m " wrote a readme file"
-   - git 仓库日志及回退
+   - **git 仓库日志及回退**
      - git status 仓库状态日志
      - git diff 显示文件修改内容
      - git log 显示提交日志 git log --pretty 简洁方式查看
