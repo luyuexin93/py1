@@ -48,11 +48,11 @@ def cthulhu_room():
     next=raw_input(">")
      
     if "flee" in next:
-         start()
+        start()
     elif "head" in next:
         dead("Well that was tasty!")
     else:
-         cthulhu_room()
+        cthulhu_room()
 
 def start():
     print "You are in a dark room."
