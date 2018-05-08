@@ -1,5 +1,6 @@
 
-
+class ParserError(Exception):
+    pass
 # def test(wordlist,num):
 #     
 #     while wordlist[-1]==int(num):
@@ -17,7 +18,7 @@ def peek(word_list):
    
 def match(word_list,expecting):
     if word_list:
-        word=word_list.pop()
+        word=word_list.pop(0)
              
         if word[0]==expecting:
             return word
@@ -42,10 +43,17 @@ def match(word_list,expecting):
 def skip(word_list,word_type):
     while peek(word_list) == word_type:
          match(word_list,word_type)   
-    return word_list          
-print skip([('stop','go'),('verb','g'),('verb','g')],'verb') 
+              
+#print skip([('stop','go'),('verb','g'),('verb','g')],'verb') 
 
+def parse_verb(word_list):
+    skip(word_list,'stop')
+    if peek(word_list)=='verb':
+        return match(word_list,'verb')
+    else:
+        raise ParserError("Expected a verb next")
 
-        
-        
+word1=[('stop','g'),('verb','g2'),('verb','p')]
+verb = parse_verb(word1)        
+print verb  
         
