@@ -1,9 +1,18 @@
 import web
+from gothonweb import map
 
 urls = (
     '/hello','Index')
 app = web.application(urls,globals())
 render = web.template.render('C:/Python27/workplace/myweb/gothonweb/templates/',base="layout")
+
+
+# little hack so that debug mode works with sessions
+if web.config.get('_session')is None:
+    store=web.session.DiskStore('sessions')
+    store=web.session.DBStore()
+    session=web.session.Session(app,store)
+
 
 
 
