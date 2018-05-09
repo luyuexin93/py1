@@ -1,4 +1,4 @@
-
+#-*- coding:utf-8 -*-
 class Room(object):
     
     def __init__(self,name,description):
@@ -50,20 +50,22 @@ the_bridge = Room("The Bridge",
     Your grab the neutron bomb and run as fast as you can to the 
     bridge where you must place it in the right spot
     
-    You burst onto the Bridge with the neutron destruct boomb\n
-    under your arm and surprises 5 Gothons who are trying to\n
-    take control of the ship.Eachof them has an even uglier\nclown costume than
-    the last.They haven't pulled their\nweapons out yet as they see the active bomb under
-    your\narm and don't want to set it off.
+    You burst onto the Bridge with the neutron destruct boomb
+    under your arm and surprises 5 Gothons who are trying to
+    take control of the ship.Eachof them has an even uglier
+    clown costume than the last.They haven't pulled their
+    weapons out yet as they see the active bomb under
+    your arm and don't want to set it off.
     """)
 
 escape_pod = Room("Escape Pod",
     """
-    You point your blaster at the bomb under your arm\nand the Gothons
-    put their hands up and start to sweat.\nYou inch backward to the door,open it an then carefully
-    \n place the bomb on the floor,pointing your blaster at it.\nYou then jump back
-    through the door,punch the close button
-    an blast the lock so the Gothons can't get out.\Now that the bomb is placed you run to the escape pod to\n
+    You point your blaster at the bomb under your arm and the Gothons
+    put their hands up and start to sweat.You inch backward to the door,
+    open it an then carefully place the bomb on the floor,pointing your blaster at it.
+    You then jump back through the door,punch the close button
+    an blast the lock so the Gothons can't get out.
+    Now that the bomb is placed you run to the escape pod to
     get off this tin can.
     
     You rush through the ship desperately trying to make it to
@@ -98,15 +100,16 @@ the_end_loser = Room("The End",
     
 generic_death = Room("death","You died.")
 generic_death.add_paths({
-    'shot':
+    'shoot!':
     """
     Quick on the draw you yank out your blaster and fire it athe Gothon
     His clown costume is flowing and moving around his body,which throws
     off your aim.Your laser hits his costume but misses him entriely.This
     completely ruins his brand new costume his mother bought him,which
     makes him fly into an insane rage and blast you repeatedly in the face until
-    you are dead.Then he eats you.""",
-    'dodge':
+    you are dead.Then he eats you.
+    """,
+    'dodge!':
     """
     Like a world class boxer you dodge,weave,slip and slide right
     as the Gothon's blaster cranks a laser past your head
@@ -132,18 +135,20 @@ generic_death.add_paths({
     
     })
 
+escape_pod.add_paths({'2':the_end_winner,
+                      '*':the_end_loser})
 
 the_bridge.add_paths({
-    'throw the bomb':generic_death.go('throw the bomb'),
+    'throw the bomb':generic_death,
     'slowly place the bomb':escape_pod})
 
 laser_weapon_armory.add_paths({
     '0132':the_bridge,
-    '*':generic_death.go('*')})
+    '*':generic_death})
 
 central_corridor.add_paths({
-    'shoot!':generic_death.go('shoot'),
-    'dodge!':generic_death.go('dodge'),
+    'shoot!':generic_death,
+    'dodge!':generic_death,
     'tell a joke':laser_weapon_armory})
 
 START=central_corridor

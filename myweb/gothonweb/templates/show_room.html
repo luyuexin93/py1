@@ -1,0 +1,22 @@
+$def with(room,put)
+
+<h1>$room.name </h1>
+$put
+<pre>
+<h2>$room.description</h2>
+</pre>
+
+$if room.name=="death":
+    $room.go(put)
+	<p><a href="/">Play Again?</a></p>
+	
+$elif room.name=="The End":
+	
+	
+	<p><a href="/">Play Again?</a></p>
+$else:	
+	<p>
+	<form action="/game" method="POST">
+		- <input type="text" name="action"><input type="SUBMIT">
+	</form>
+	</p>

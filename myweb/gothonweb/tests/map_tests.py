@@ -1,5 +1,8 @@
 from nose.tools import *
-from gothonweb.map import *
+import sys
+sys.path.append('C:/Python27/workplace/myweb/gothonweb/gothonweb')
+from map import *
+
 
 
 
